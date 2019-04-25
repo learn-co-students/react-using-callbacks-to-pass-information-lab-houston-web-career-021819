@@ -9,9 +9,15 @@ export default class Cell extends Component {
     }
   }
   
+  //change this cell square color using the color passed from Matrix
+  eventHandler = () =>{
+   const newColor = this.props.newColor()//get new color by calling props function
+   this.setState({color:newColor})
+  }
+  
   render() {
     return (
-      <div className="cell" style={{backgroundColor: this.state.color}}>
+      <div onClick = {this.eventHandler} className="cell" style={{backgroundColor: this.state.color}} >
       </div>
     )
   }

@@ -4,13 +4,19 @@ export default class ColorSelector extends Component {
   
   makeColorSwatches = () => (
     ["#F00", "#F80", "#FF0", "#0F0", "#00F", "#508", "#90D", "#FFF", "#000"].map((str, idx) => {
-      return <div key={idx} className="color-swatch" style={{backgroundColor: str}}/>
+      return <div onClick = {this.selectedColor} key={idx} className="color-swatch" style={{backgroundColor: str}}/>
     })
-  )
+  ) 
+
+  selectedColor = (e) =>{
+    let color = e.target.style.backgroundColor
+    this.props.trackColor (color)
+    //console.log(e.target.style.backgroundColor)
+  }
   
   render() {
     return (
-      <div id="colorSelector">
+      <div id="colorSelector" >
         {this.makeColorSwatches()}
       </div>
     )
