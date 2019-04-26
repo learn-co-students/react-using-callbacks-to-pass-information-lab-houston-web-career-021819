@@ -7,10 +7,28 @@ export default class Matrix extends Component {
 
   constructor() {
     super()
+    
+    this.state = {
+      currentColor: ''
+    }
+  }
+
+  setColor = (str) => {
+    //console.log('got here')
+    this.setState({
+      currentColor: str
+    })
+     console.log(str)
+    // console.log(this.state.currentcolor)
+    //React dev tools will do that for us . You can view the state and props of elements there
+  }
+
+  selectedColor = () => { 
+    return this.state.currentColor
   }
 
   genRow = (vals) => (
-    vals.map((val, idx) => <Cell key={idx} color={val} />)
+    vals.map((val, idx) => <Cell key={idx} color={val} selectedColor={this.selectedColor()}/>)
   )
 
   genMatrix = () => (
@@ -19,9 +37,10 @@ export default class Matrix extends Component {
 
 
   render() {
+    
     return (
       <div id="app">
-        <ColorSelector />
+        <ColorSelector setColor={this.setColor}/>
         <div id="matrix">
           {this.genMatrix()}
         </div>

@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 
+
+//onClick={()=>{this.props.setColor(`${str}`)} }
+//onclick={()}
 export default class ColorSelector extends Component {
   
   makeColorSwatches = () => (
     ["#F00", "#F80", "#FF0", "#0F0", "#00F", "#508", "#90D", "#FFF", "#000"].map((str, idx) => {
-      return <div key={idx} className="color-swatch" style={{backgroundColor: str}}/>
+      return <div key={idx} className="color-swatch"  style={{backgroundColor: str}} onClick={()=>{this.props.setColor(str)} }/>
     })
   )
+
   
   render() {
     return (
-      <div id="colorSelector">
+      <div id="colorSelector" >
         {this.makeColorSwatches()}
+        
       </div>
     )
   }
